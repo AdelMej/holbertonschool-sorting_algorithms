@@ -50,6 +50,15 @@ void test_quick_sort_duplicate(void)
 	quick_sort(duplicate, 10);
 	TEST_ASSERT_EQUAL_INT_ARRAY(expect, duplicate, 10);
 }
+
+void test_quick_sort_reverse(void)
+{
+	int reverse[10] = {100, 47, 46, 35, 20, 10, 8, 5, 1, 0};
+	int expect[10] = {0, 1, 5, 8, 10, 20, 35, 46, 47, 100};
+	
+	quick_sort(reverse, 10);
+	TEST_ASSERT_EQUAL_INT_ARRAY(expect, reverse, 10);
+}
 int main(void)
 {
     UNITY_BEGIN();
@@ -58,6 +67,7 @@ int main(void)
 	RUN_TEST(test_quick_sort_single_elem);
 	RUN_TEST(test_quick_sort_already_sorted);
 	RUN_TEST(test_quick_sort_duplicate);
+	RUN_TEST(test_quick_sort_reverse);
     return UNITY_END();
 }
 

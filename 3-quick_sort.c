@@ -51,8 +51,7 @@ static void quick_sort_printing(int *array,
 								int *original_array,
 								size_t max_size)
 {
-	size_t pivot = array[0];
-	size_t i, j;
+	size_t pivot, i, j;
 
 	if (array == NULL || size <= 1)
 		return;
