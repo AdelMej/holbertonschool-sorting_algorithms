@@ -61,7 +61,7 @@ static void quick_sort_printing(int *array,
 	i = 0;
 	for (j = 0; j < pivot; j++) /* partition the array with pivot */
 	{
-		if (array[j] < array[pivot])
+		if (array[j] <= array[pivot])
 		{
 			if (i != j)
 			{
