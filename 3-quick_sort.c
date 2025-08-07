@@ -51,7 +51,7 @@ static void quick_sort_printing(int *array,
 								int *original_array,
 								size_t max_size)
 {
-	int pivot = array[0];
+	size_t pivot = array[0];
 	size_t i, j;
 
 	if (array == NULL || size <= 1)
@@ -60,31 +60,33 @@ static void quick_sort_printing(int *array,
 	/* selecting last element as a pivot */
 	pivot = size - 1;
 
-	/* put the pivot in front */
-	swap(&array[pivot], &array[0]);
-
-	i = 1;
+	i = 0;
 	/* parition the array with pivot */
-	for (j = 1; j < size; j++)
+	for (j = 0; j < size - 1; j++)
 	{
-		if (array[j] < array[0])
+		if (array[j] < array[pivot])
 		{
-			swap(&array[i], &array[j]);
+			if (array[i] != array[j])
+			{
+				swap(&array[i], &array[j]);
+				print_array(original_array, max_size);
+			}
 			i++;
 		}
 	}
-	swap(&array[0], &array[i - 1]);
-	print_array(original_array, max_size); /* print the full array */
+	swap(&array[pivot], &array[i]);
+	if (i != pivot)
+		print_array(original_array, max_size);
 	/*
 	 * recursively sort left size
 	 * start at the begining of the array
-	 * ends at i - 1 (before the pivot)
+	 * ends at i (before the pivot)
 	 */
-	quick_sort_printing(array, i - 1, original_array, max_size);
+	quick_sort_printing(array, i, original_array, max_size);
 	 /*
 	  * recursively sort right size
-	  * array + i to place the start
+	  * array + i + 1 to place the start
 	  * of the array in the right parition
 	  */
-	quick_sort_printing(array + i, size - i, original_array, max_size);
+	quick_sort_printing(array + i + 1, size - i - 1, original_array, max_size);
 }
