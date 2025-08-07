@@ -73,11 +73,8 @@ static void quick_sort_printing(int *array,
 			i++;
 		}
 	}
-	if (i != pivot)
-	{
-		swap(&array[pivot], &array[i]);
-		print_array(original_array, max_size);
-	}
+	swap(&array[pivot], &array[i]);
+	print_array(original_array, max_size);
 	/*
 	 * recursively sort left size
 	 * start at the begining of the array
