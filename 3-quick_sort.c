@@ -53,7 +53,7 @@ static void quick_sort_printing(int *array,
 {
 	size_t pivot, i, j;
 
-	if (array == NULL || size <= 1)
+	if (array == NULL || size < 2)
 		return;
 
 	/* selecting last element as a pivot */
@@ -61,7 +61,7 @@ static void quick_sort_printing(int *array,
 
 	i = 0;
 	/* partition the array with pivot */
-	for (j = 0; j < size - 1; j++)
+	for (j = 0; j < pivot; j++)
 	{
 		if (array[j] < array[pivot])
 		{
@@ -83,11 +83,13 @@ static void quick_sort_printing(int *array,
 	 * start at the begining of the array
 	 * ends at i (before the pivot)
 	 */
-	quick_sort_printing(array, i, original_array, max_size);
+	if (i > 0)
+		quick_sort_printing(array, i, original_array, max_size);
 	 /*
 	  * recursively sort right size
 	  * array + i + 1 to place the start
 	  * of the array in the right parition
 	  */
-	quick_sort_printing(array + i + 1, size - i - 1, original_array, max_size);
+	if (i + 1 > 0)
+		quick_sort_printing(array + i + 1, size - i - 1, original_array, max_size);
 }
