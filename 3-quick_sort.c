@@ -1,6 +1,6 @@
 #include "sort.h"
 #include <stddef.h>
-
+#include <stdio.h>
 /* --- Function declarations --- */
 static void swap(int *a, int *b);
 static void quick_sort_printing(int *array, size_t size,
@@ -73,10 +73,11 @@ static void quick_sort_printing(int *array,
 			i++;
 		}
 	}
-	swap(&array[pivot], &array[i]);
 	if (i != pivot)
+	{
+		swap(&array[pivot], &array[i]);
 		print_array(original_array, max_size);
-
+	}
 	/*
 	 * recursively sort left size
 	 * start at the begining of the array
