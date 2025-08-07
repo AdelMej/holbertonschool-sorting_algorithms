@@ -1,8 +1,3 @@
-Best Case (O(n)):
-The best-case scenario occurs when the array is already sorted. In this case, the algorithm will make a single pass through the array to check if any swaps are needed. If it doesn't find any swaps, it can terminate early. Thus, the time complexity is O(n) because it has to just go through the array once.
-
-Average Case (O(n^2)):
-For an average case, we assume that the elements are in random order. In Bubble Sort, for each element in the array, it has to compare it with every other element. This results in a nested loop where for every element, you check all other elements, leading to roughly n comparisons for n items, which results in a time complexity of O(n^2).
-
-Worst Case (O(n^2)):
-The worst-case situation happens when the array is sorted in reverse order. In this case, the algorithm will go through the entire array for each element, leading again to the same nested loop scenario with O(n^2) complexity.
+(O(n))
+(O(n^2))
+(O(n^2))
