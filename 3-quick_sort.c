@@ -60,24 +60,18 @@ static void quick_sort_printing(int *array,
 	pivot = size - 1;
 
 	i = 0;
-	/* parition the array with pivot */
+	/* partition the array with pivot */
 	for (j = 0; j < size - 1; j++)
 	{
 		if (array[j] < array[pivot])
 		{
-			if (i != j)
-			{
-				swap(&array[i], &array[j]);
-				print_array(original_array, max_size);
-			}
+			swap(&array[i], &array[j]);
+			print_array(original_array, max_size);
 			i++;
 		}
 	}
-	if (i != pivot)
-	{
-		swap(&array[pivot], &array[i]);
-		print_array(original_array, max_size);
-	}
+	swap(&array[pivot], &array[i]);
+	print_array(original_array, max_size);
 	/*
 	 * recursively sort left size
 	 * start at the begining of the array
