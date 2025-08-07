@@ -3,9 +3,11 @@
 
 /* --- Function declarations --- */
 static void swap(int *a, int *b);
-static void quick_sort_printing(int *array, size_t size, int *original_array, size_t max_size);
+static void quick_sort_printing(int *array, size_t size,
+								int *original_array,
+								size_t max_size);
 
-/*
+/**
  * quick_sort - a function that sort an array using quick sort algorithm
  * @array: an array to sort
  * @size: th size of the array
@@ -20,7 +22,7 @@ void quick_sort(int *array, size_t size)
 	quick_sort_printing(array, size, array, size);
 }
 
-/*
+/**
  * swap - a function to swap 2 integers in an array
  * @a: the pointer to an int
  * @b: the pointer to an int
@@ -44,7 +46,10 @@ static void swap(int *a, int *b)
  *
  * Return: void
  */
-static void quick_sort_printing(int *array, size_t size, int *original_array, size_t max_size)
+static void quick_sort_printing(int *array,
+								size_t size,
+								int *original_array,
+								size_t max_size)
 {
 	int pivot = array[0];
 	size_t i, j;
@@ -70,12 +75,14 @@ static void quick_sort_printing(int *array, size_t size, int *original_array, si
 	}
 	swap(&array[0], &array[i - 1]);
 	print_array(original_array, max_size); /* print the full array */
-	/* recursively sort left size 
+	/*
+	 * recursively sort left size
 	 * start at the begining of the array
 	 * ends at i - 1 (before the pivot)
 	 */
 	quick_sort_printing(array, i - 1, original_array, max_size);
-	 /* recursively sort right size
+	 /*
+	  * recursively sort right size
 	  * array + i to place the start
 	  * of the array in the right parition
 	  */
