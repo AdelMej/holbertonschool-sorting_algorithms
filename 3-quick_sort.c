@@ -58,10 +58,8 @@ static void quick_sort_printing(int *array,
 
 	/* selecting last element as a pivot */
 	pivot = size - 1;
-
 	i = 0;
-	/* partition the array with pivot */
-	for (j = 0; j < pivot; j++)
+	for (j = 0; j < pivot; j++) /* partition the array with pivot */
 	{
 		if (array[j] < array[pivot])
 		{
