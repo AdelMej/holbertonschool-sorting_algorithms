@@ -12,6 +12,7 @@
 !README.md
 !.gitignore
 !Makefile
+!*-O
 
 # Un-ignore tests folder and all files inside recursively
 !tests/
