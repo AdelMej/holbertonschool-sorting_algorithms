@@ -1,6 +1,6 @@
 #include "sort.h"
 #include <stddef.h>
-
+#include <stdio.h>
 /* --- Function declarations --- */
 static void swap(int *a, int *b);
 static void quick_sort_printing(int *array, size_t size,
@@ -51,40 +51,43 @@ static void quick_sort_printing(int *array,
 								int *original_array,
 								size_t max_size)
 {
-	int pivot = array[0];
-	size_t i, j;
+	size_t pivot, i, j;
 
-	if (array == NULL || size <= 1)
+	if (array == NULL || size < 2)
 		return;
 
 	/* selecting last element as a pivot */
 	pivot = size - 1;
-
-	/* put the pivot in front */
-	swap(&array[pivot], &array[0]);
-
-	i = 1;
-	/* parition the array with pivot */
-	for (j = 1; j < size; j++)
+	i = 0;
+	for (j = 0; j < pivot; j++) /* partition the array with pivot */
 	{
-		if (array[j] < array[0])
+		if (array[j] <= array[pivot])
 		{
-			swap(&array[i], &array[j]);
+			if (i != j)
+			{
+				swap(&array[i], &array[j]);
+				print_array(original_array, max_size);
+			}
 			i++;
 		}
 	}
-	swap(&array[0], &array[i - 1]);
-	print_array(original_array, max_size); /* print the full array */
+	if (i != pivot)
+	{
+		swap(&array[pivot], &array[i]);
+		print_array(original_array, max_size);
+	}
 	/*
 	 * recursively sort left size
 	 * start at the begining of the array
-	 * ends at i - 1 (before the pivot)
+	 * ends at i (before the pivot)
 	 */
-	quick_sort_printing(array, i - 1, original_array, max_size);
+	if (i > 0)
+		quick_sort_printing(array, i, original_array, max_size);
 	 /*
 	  * recursively sort right size
-	  * array + i to place the start
+	  * array + i + 1 to place the start
 	  * of the array in the right parition
 	  */
-	quick_sort_printing(array + i, size - i, original_array, max_size);
+	if (i + 1 > 0)
+		quick_sort_printing(array + i + 1, size - i - 1, original_array, max_size);
 }
